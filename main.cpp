@@ -125,7 +125,7 @@ int main()
     string currSym = input[0];
     input.erase(input.begin());
 
-    string action = "shift";
+    //string action = "shift";
 
     vector<Row> table;
     int reduceCount = 0;
@@ -135,13 +135,7 @@ int main()
         line.currSym = currSym;
         line.remains = input;
         line.reduceNum = "";
-        /*print(stk);
-        cout<<"\t\t\t\t";
-        cout<<currSym;
-        cout<<"\t\t\t\t";
-        print(input);
-        cout<<"\t\t\t\t";
-        */
+
         grammer replacement;
         bool reduce = false;
 
@@ -197,10 +191,6 @@ int main()
 
             reduceCount ++;
             line.reduceNum  = to_string(reduceCount);
-            //cout<< "Reduce: " << replacement.p << " -> ";
-            //action = "reduce";
-            //print(replacement.prod);
-            //cout<< endl;
         }else{
             if (currSym ==""){
 
@@ -214,12 +204,10 @@ int main()
                 currSym = input[0];
                 input.erase(input.begin());
             }
-            //cout<< "Shift" << endl;
             line.action = "Shift";
-            action = "shift";
+            //action = "shift";
         }
         table.push_back(line);
-        //getch();
     }
 
 
