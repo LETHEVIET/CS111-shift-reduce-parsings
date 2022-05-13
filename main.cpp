@@ -210,6 +210,7 @@ int main()
         table.push_back(line);
     }
 
+    freopen("output.txt", "w", stdout);
 
     if (stk.size() == 1 && stk[0] == g[0].p){
         cout<< "A";

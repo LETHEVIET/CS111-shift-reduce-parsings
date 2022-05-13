@@ -1,0 +1,30 @@
+A
+Stack				CurrSym		Rest of Input				Action		Reduction number
+				id		+ id * id ^ id + id 				Shift		
+id 				+		id * id ^ id + id 				Reduce: F->id		1
+F 				+		id * id ^ id + id 				Reduce: S->F		2
+S 				+		id * id ^ id + id 				Reduce: T->S		3
+T 				+		id * id ^ id + id 				Reduce: E->T		4
+E 				+		id * id ^ id + id 				Shift		
+E + 				id		* id ^ id + id 				Shift		
+E + id 				*		id ^ id + id 				Reduce: F->id		5
+E + F 				*		id ^ id + id 				Reduce: S->F		6
+E + S 				*		id ^ id + id 				Reduce: T->S		7
+E + T 				*		id ^ id + id 				Shift		
+E + T * 				id		^ id + id 				Shift		
+E + T * id 				^		id + id 				Reduce: F->id		8
+E + T * F 				^		id + id 				Shift		
+E + T * F ^ 				id		+ id 				Shift		
+E + T * F ^ id 				+		id 				Reduce: F->id		9
+E + T * F ^ F 				+		id 				Reduce: S->F		10
+E + T * F ^ S 				+		id 				Reduce: S->F^S		11
+E + T * S 				+		id 				Reduce: T->T*S		12
+E + T 				+		id 				Reduce: E->E+T		13
+E 				+		id 				Shift		
+E + 				id						Shift		
+E + id 										Reduce: F->id		14
+E + F 										Reduce: S->F		15
+E + S 										Reduce: T->S		16
+E + T 										Reduce: E->E+T		17
+E 										Reduce: P->E		18
+P 												
