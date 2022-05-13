@@ -1,0 +1,11 @@
+                        a                        b b c d e                     shift
+                        a                         b                        b c d e                     shift
+                        a b                         b                        c d e                   reduce A -> b 
+                        a A                         b                        c d e                     shift
+                        a A b                         c                        d e                     shift
+                        a A b c                         d                        e                   reduce A -> A b c 
+                        a A                         d                        e                     shift
+                        a A d                         e                  reduce B -> d 
+                        a A B                         e                    shift
+                        a A B e                                            reduce S -> a A B e 
+                        S                          

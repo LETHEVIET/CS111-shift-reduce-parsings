@@ -1,0 +1,14 @@
+P ---> E
+E ---> E + T | E - T | T
+T ---> T * S | T / S | S
+S ---> F ^ S | F
+F ---> ( E ) | id
+
+id + id * id ^ id + id
+
+
+
+P ---> E
+E ---> E + T | T
+T ---> T * F | F
+F ---> ( E ) | id
