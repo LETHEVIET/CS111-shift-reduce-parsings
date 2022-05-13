@@ -113,6 +113,21 @@ void print (vector<string> str){
     }
 }
 
+void spacing(int number){
+    for (int i = 0; i < number; i++){
+        cout<< " ";
+    }
+}
+
+int length(vector<string> str){
+    int res = 0;
+    for (int i = 0; i< str.size(); i++){
+        res += str[i].size();
+    }
+    res += str.size();
+    return res;
+}
+
 int main()
 {
     read_grammar();
@@ -194,6 +209,17 @@ int main()
         }else{
             if (currSym ==""){
 
+                if (stk.size() == 1 && stk[0] == g[0].p){
+                    line.action = "Accept";
+                }else{
+
+                    if (stk[0] == stk[stk.size()-1] && stk[stk.size()-1] == "$" && stk.size() == 3){
+                        line.action = "Accept";
+                    }else{
+                        line.action = "Fail";
+                    }
+
+                }
                 table.push_back(line);
                 break;
             }
@@ -205,39 +231,32 @@ int main()
                 input.erase(input.begin());
             }
             line.action = "Shift";
-            //action = "shift";
         }
         table.push_back(line);
     }
 
     freopen("output.txt", "w", stdout);
-    if (stk.size() == 1 && stk[0] == g[0].p){
+    if (table[table.size()-1].action == "Accept"){
         cout<< "A";
     }else{
-
-        if (stk[0] == stk[stk.size()-1] && stk[stk.size()-1] == "$" && stk.size() == 3){
-            cout<< "A";
-        }else{
-            cout<< "F";
-        }
-
+        cout<< "F";
     }
     cout<< endl;
-    cout<< "Stack" << "\t\t\t\t"
-    << "CurrSym" << "\t\t"
-    << "Rest of Input" << "\t\t\t\t"
-    << "Action" << "\t\t"
-    << "Reduction number" << endl;
+    cout<< "Stack"; spacing(30-5);
+    cout<< "CurrSym"; spacing(10-7);
+    cout<< "Rest of Input"; spacing(30-13);
+    cout<< "Action"; spacing(15-6);
+    cout<< "Reduction number" << endl;
 
     for (int i = 0; i< table.size(); i++){
         print(table[i].stk);
-        cout<< "\t\t\t\t";
+        spacing(30 - length(table[i].stk));
         cout<< table[i].currSym;
-        cout<< "\t\t";
+        spacing(10 - table[i].currSym.size());
         print(table[i].remains);
-        cout<< "\t\t\t\t";
+        spacing(30 - length(table[i].remains));
         cout<< table[i].action;
-        cout<< "\t\t";
+        spacing(15 - table[i].action.size());
         cout<< table[i].reduceNum;
         cout<< endl;
     }

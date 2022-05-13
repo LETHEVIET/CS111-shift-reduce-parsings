@@ -1,3 +1,5 @@
-S ---> a A B e
-A ---> A b c | b
-B --->  d
+P ---> E
+E ---> E + T | E - T | T
+T ---> T * S | T / S | S
+S ---> F ^ S | F
+F ---> ( E ) | id
