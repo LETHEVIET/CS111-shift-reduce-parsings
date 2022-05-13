@@ -211,11 +211,16 @@ int main()
     }
 
     freopen("output.txt", "w", stdout);
-
     if (stk.size() == 1 && stk[0] == g[0].p){
         cout<< "A";
     }else{
-        cout<< "F";
+
+        if (stk[0] == stk[stk.size()-1] && stk[stk.size()-1] == "$" && stk.size() == 3){
+            cout<< "A";
+        }else{
+            cout<< "F";
+        }
+
     }
     cout<< endl;
     cout<< "Stack" << "\t\t\t\t"
